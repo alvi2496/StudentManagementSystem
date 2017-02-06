@@ -1,0 +1,33 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Semester<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Create</a></li>
+            <li><a href="#">Update</a></li>
+            <li><a href="#">Delete</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Create</a></li>
+            <li><a href="#">Update</a></li>
+            <li><a href="#">Delete</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Result<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Create</a></li>
+            <li><a href="#">Update</a></li>
+            <li><a href="#">Delete</a></li>
+          </ul>
+        </li>
+        <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+      </ul>
+    </div>
+  </div>
+</nav>

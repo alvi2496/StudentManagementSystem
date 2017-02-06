@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-info">
+      <div class="panel-heading text-center"><%= current_user.first_name + " " + current_user.last_name %></div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-4">
+
+          </div>
+          <div class="col-md-8">
+            <div class="table-responsive">
+              <table class="table">
+                <tbody>
+                <tr>
+                  <td>Email</td>
+                  <td><%= current_user.email%></td>
+                </tr>
+                <tr>
+                  <td>Date of birth</td>
+                  <td><%= current_user.date_of_birth%></td>
+                </tr>
+                <tr>
+                  <td>Gender</td>
+                  <td><%= current_user.sex%></td>
+                </tr>
+                <tr>
+                  <td>Address</td>
+                  <td><%= current_user.address%></td>
+                </tr>
+                <tr>
+                  <td>Contact number</td>
+                  <td><%= current_user.contact_number%></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <%= link_to "Update", edit_user_path(current_user), class: "btn btn-primary", style:"color: white" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
