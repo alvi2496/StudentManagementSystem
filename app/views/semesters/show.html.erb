@@ -1,0 +1,35 @@
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-info">
+      <div class="panel-heading text-center"><%= @semester.name %></div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <td>Course Code</td>
+                <td>Course Name</td>
+                <td>Credit</td>
+              </tr>
+            </thead>
+            <tbody>
+              <% @courses.each do |course| %>
+                <tr>
+                  <td><%= course.course_code %></td>
+                  <td><%= course.course_name %></td>
+                  <td><%= course.course_credit %> </td>
+                  <td><%= link_to "Remove",unassign_course_path(course), class: "btn btn-danger", style:"color:white" %></td>
+                </tr>
+              <%  end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <%= link_to 'Home', users_path, class:"btn btn-primary", style:"color:white" %>
+        <%= link_to 'Assign New Course', show_available_courses_semester_path(@semester), class:"btn btn-primary", style:"color:white" %>
+      </div>
+    </div>
+  </div>
+</div>

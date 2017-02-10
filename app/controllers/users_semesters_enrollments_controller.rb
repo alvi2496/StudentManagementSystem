@@ -1,0 +1,48 @@
+class UsersSemestersEnrollmentsController < ApplicationController
+
+  def index
+    @semesters = current_user.semesters.sort_by_position
+  end
+
+  def show
+    @semester = Semester.find(params[:id])
+    @user_semester = UsersSemestersEnrollment.user_semester(current_user.id, @semester.id).first
+  end
+
+  def new
+    @enrolled_semesters = current_user.semesters.count
+    @current_semester = current_user.users_semesters_enrollments.current_semester(current_user.id)
+    if @enrolled_semesters == 0
+      @semester = Semester.find_by(:position => (@enrolled_semesters + 1))
+    elsif @current_semester.count > 0
+      flash[:not_allowed] = "You are already in a semester that you have not completed yet!!"
+    else
+      @semester = Semester.find_by(:position => (@enrolled_semesters + 1))
+    end
+    @enrollment = UsersSemestersEnrollment.new
+  end
+
+  def create
+    @user_id = current_user.id
+    @enrollment = UsersSemestersEnrollment.new(:user_id => @user_id, :semester_id => params[:semester], :is_current => true)
+    if @enrollment.save
+      flash[:notice] = "Semester assigned successfully"
+      redirect_to new_users_semesters_enrollment_path
+    else
+      flash[:notice] = "Unsuccessful"
+    end
+  end
+
+  def edit
+  end
+
+  def update
+
+  end
+
+  private
+
+  def permit_params
+    params.require(:users_semesters_enrollment).permit(:user_id, :semester_id, :is_current)
+  end
+end

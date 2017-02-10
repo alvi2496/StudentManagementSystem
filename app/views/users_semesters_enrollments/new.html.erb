@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-info">
+      <div class="panel-heading text-center">Semester List</div>
+      <div class="panel-body">
+        <% if flash[:not_allowed] %>
+            <p><%= flash[:not_allowed] %> </p>
+        <% else %>
+        <div style="padding-left: 50px">
+          <%= form_for(@enrollment, :method => 'post') do |f| %>
+            <div class="radio">
+              <%= radio_button_tag(:semester, @semester.id) %>
+              <%= label_tag(:semester, @semester.name) %>
+            </div>
+            <div class="action">
+              <%= f.submit "Register", class:"btn btn-primary" %>
+            </div>
+        </div>
+          <% end %>
+        <% end %>
+        </div>
+      <div class="panel-footer">
+        <%= link_to 'Home', users_path, class:"btn btn-primary", style:"color:white" %>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

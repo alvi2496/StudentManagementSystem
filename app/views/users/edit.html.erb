@@ -5,7 +5,7 @@
 </div>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(current_user, :method => 'post') do |f| %>
+    <%= form_for(current_user, :html => {:multipart => true}) do |f| %>
         <div class="field form-group">
           <%= f.label :email %><br />
           <%= f.email_field :email, autofocus: true, class: "form-control", id:"emailInput", placeholder:"Enter Email" %>
@@ -44,6 +44,11 @@
         <div class="form-group">
           <%= f.label :contact_number %>
           <%= f.text_field :contact_number, class:"form-control", id:"contactNumber", placeholder:"Enter Contact Number" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :profile_picture %>
+          <%= f.file_field :image_url, class: "btn btn-info" %>
         </div>
 
         <div class="actions">

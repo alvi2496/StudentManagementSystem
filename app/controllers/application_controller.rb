@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) do |user_params|
-      user_params.permit({ roles: [] }, :email, :password, :password_confirmation, :first_name, :last_name, :date_of_birth, :sex, :address, :contact_number)
+      user_params.permit({ roles: [] }, :email, :password, :password_confirmation, :first_name, :last_name, :date_of_birth, :sex, :address, :contact_number, :image_url)
     end
   end
 
@@ -19,7 +19,21 @@ class ApplicationController < ActionController::Base
     resource_or_scope = nil
     new_user_session_path
   end
+
   def after_sign_in_path_for(resource)
     users_path
   end
+
+  def ensure_if_admin
+    unless current_user.is_admin
+      render file: 'public/404.html'
+    end
+  end
+
+  def ensure_if_signed_in
+    unless signed_in?
+      redirect_to new_user_session_path
+    end
+  end
+
 end

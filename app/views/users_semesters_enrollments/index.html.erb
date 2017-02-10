@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-info">
+      <div class="panel-heading text-center">Semester List</div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+            <tr>
+              <th>Semesters</th>
+              <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @semesters.each do |semester| %>
+                <tr>
+                  <td><%= semester.name%></td>
+                  <td>
+                    <% if semester.users_semesters_enrollments.is_completed.count > 0 %>
+                        <span class="label label-success">Completed</span>
+                        <% else %>
+                        <span class="label label-info">Current</span>
+                    <% end %>
+                  </td>
+                  <td><%= link_to 'Show', users_semesters_enrollment_path(semester), class:"btn btn-primary", style:"color:white"%></td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <%= link_to 'Home', users_path, class:"btn btn-primary", style:"color:white" %>
+      </div>
+    </div>
+  </div>
+</div>

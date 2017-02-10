@@ -1,0 +1,2 @@
+module UsersSemestersEnrollmentsHelper
+end

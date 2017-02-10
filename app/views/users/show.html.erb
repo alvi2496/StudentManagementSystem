@@ -5,7 +5,9 @@
       <div class="panel-body">
         <div class="row">
           <div class="col-md-4">
-
+            <div class="thumbnail">
+              <%= image_tag current_user.image_url.url(:thumb).to_s %>
+            </div>
           </div>
           <div class="col-md-8">
             <div class="table-responsive">
@@ -34,8 +36,11 @@
                 </tbody>
               </table>
             </div>
-            <%= link_to "Update", edit_user_path(current_user), class: "btn btn-primary", style:"color: white" %>
           </div>
+        </div>
+        <div align="center">
+          <%= link_to "Update", edit_user_path(current_user), class: "btn btn-primary", style:"color: white" %>
+          <%= link_to "Home", users_path, class: "btn btn-primary", style:"color: white" %>
         </div>
       </div>
     </div>

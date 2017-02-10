@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-info">
+      <div class="panel-heading text-center">Available Courses</div>
+      <div class="panel-body">
+        <%= form_for :semester, url: assign_new_courses_semester_path, method:'patch' do |f| %>
+            <% @courses.each do |course| %>
+                <%= check_box_tag "#{course.course_code}", course.id, @semester.courses.include?(course), :name => 'semester[course_ids][]' %>
+                <%= label_tag course.course_code %>
+                <br>
+            <% end %>
+            <div class="actions">
+              <%= f.submit "Assign", class:"btn btn-primary" %>
+            </div>
+        <% end %>
+      </div>
+      <div class="panel-footer">
+        <%= link_to 'Home', users_path, class:"btn btn-primary", style:"color:white" %>
+      </div>
+    </div>
+  </div>
+</div>
