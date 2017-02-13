@@ -8,7 +8,7 @@
             <thead>
             <tr>
               <th>Semesters</th>
-              <th>Status</th>
+              <th>Action</th>
             </tr>
             </thead>
             <tbody>
@@ -16,13 +16,10 @@
                 <tr>
                   <td><%= semester.name%></td>
                   <td>
-                    <% if UsersSemestersEnrollment.user_semester(current_user.id, semester.id).first.is_completed %>
-                        <span class="label label-success">Completed</span>
-                    <% else %>
-                        <span class="label label-info">Current</span>
-                    <% end %>
+                    <%= link_to 'Add', result_path(semester), class:"btn btn-primary" %>&nbsp;
+                    <%= link_to 'Edit', edit_result_path(semester), class:"btn btn-warning" %>&nbsp;
+                    <%= link_to 'Destroy', semester, class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>&nbsp;
                   </td>
-                  <td><%= link_to 'Show', users_semesters_enrollment_path(semester), class:"btn btn-primary", style:"color:white"%></td>
                 </tr>
             <% end %>
             </tbody>

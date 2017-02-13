@@ -7,6 +7,7 @@ class UsersSemestersEnrollmentsController < ApplicationController
   def show
     @semester = Semester.find(params[:id])
     @user_semester = UsersSemestersEnrollment.user_semester(current_user.id, @semester.id).first
+    @user_courses = UsersCoursesEnrollment.user_courses(current_user.id, @semester.id)
   end
 
   def new
@@ -27,9 +28,10 @@ class UsersSemestersEnrollmentsController < ApplicationController
     @enrollment = UsersSemestersEnrollment.new(:user_id => @user_id, :semester_id => params[:semester], :is_current => true)
     if @enrollment.save
       flash[:notice] = "Semester assigned successfully"
-      redirect_to new_users_semesters_enrollment_path
+      redirect_to users_path
     else
       flash[:notice] = "Unsuccessful"
+      redirect_to users_path
     end
   end
 

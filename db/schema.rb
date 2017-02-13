@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170210072012) do
+ActiveRecord::Schema.define(version: 20170213062135) do
 
   create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "course_code"
@@ -60,9 +60,9 @@ ActiveRecord::Schema.define(version: 20170210072012) do
     t.integer  "user_id"
     t.integer  "semester_id"
     t.integer  "course_id"
-    t.float    "grade_point", limit: 24
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.float    "grade_point", limit: 24, default: 0.0
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.index ["course_id"], name: "index_users_courses_enrollments_on_course_id", using: :btree
     t.index ["semester_id"], name: "index_users_courses_enrollments_on_semester_id", using: :btree
     t.index ["user_id"], name: "index_users_courses_enrollments_on_user_id", using: :btree
@@ -71,11 +71,12 @@ ActiveRecord::Schema.define(version: 20170210072012) do
   create_table "users_semesters_enrollments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.integer  "semester_id"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
-    t.boolean  "is_completed",            default: false
-    t.boolean  "is_current",              default: false
-    t.float    "gpa",          limit: 24, default: 0.0
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+    t.boolean  "is_completed",                   default: false
+    t.boolean  "is_current",                     default: false
+    t.float    "gpa",                 limit: 24, default: 0.0
+    t.boolean  "is_courses_assigned",            default: false
     t.index ["user_id", "semester_id"], name: "index_users_semesters_enrollments_on_user_id_and_semester_id", using: :btree
   end
 

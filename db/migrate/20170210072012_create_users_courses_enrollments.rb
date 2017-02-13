@@ -5,7 +5,7 @@ class CreateUsersCoursesEnrollments < ActiveRecord::Migration[5.0]
       t.references :user, index:true
       t.references :semester, index:true
       t.references :course, index:true
-      t.float "grade_point"
+      t.float "grade_point", default:0.0
       t.timestamps
     end
 

@@ -7,22 +7,20 @@
           <table class="table table-bordered">
             <thead>
             <tr>
-              <th>Semesters</th>
-              <th>Status</th>
+              <th>Name</th>
+              <th>Email</th>
             </tr>
             </thead>
             <tbody>
-            <% @semesters.each do |semester| %>
+            <% @students.each do |student| %>
                 <tr>
-                  <td><%= semester.name%></td>
+                  <td><%= student.first_name + ' ' + student.last_name%></td>
+                  <td><%= student.email %></td>
                   <td>
-                    <% if UsersSemestersEnrollment.user_semester(current_user.id, semester.id).first.is_completed %>
-                        <span class="label label-success">Completed</span>
-                    <% else %>
-                        <span class="label label-info">Current</span>
-                    <% end %>
+                    <%= link_to 'Add', add_new_result_path(student.id), method: :post, class:"btn btn-primary" %>&nbsp;
+                    <%= link_to 'Edit', edit_result_path(student), class:"btn btn-warning" %>&nbsp;
+                    <%= link_to 'Destroy', student, class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>&nbsp;
                   </td>
-                  <td><%= link_to 'Show', users_semesters_enrollment_path(semester), class:"btn btn-primary", style:"color:white"%></td>
                 </tr>
             <% end %>
             </tbody>
@@ -35,3 +33,4 @@
     </div>
   </div>
 </div>
+

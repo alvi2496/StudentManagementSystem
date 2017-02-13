@@ -20,4 +20,10 @@ Rails.application.routes.draw do
   resources :users_semesters_enrollments
   resources :users_courses_enrollments
 
+  resources :results do
+    member do
+      post :add_new
+    end
+  end
+
 end

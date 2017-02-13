@@ -22,7 +22,12 @@
             </tr>
             </thead>
             <tbody>
-
+              <% @user_courses.each do |user_course|%>
+                <tr>
+                  <td><%= Course.find(user_course.course_id).course_name %></td>
+                  <td><%= user_course.grade_point %></td>
+                </tr>
+              <% end %>
             </tbody>
           </table>
         </div>
