@@ -5,14 +5,14 @@
         <div><h4><%= @semester.name %></h4></div>
         <div>
           <% if @user_semester %>
-            <% if @user_semester.is_completed %>
-                <h4><span class="label label-success">Completed</span></h4>
-            <% else %>
-                <h4><span class="label label-info">Current</span></h4>
-            <% end %>
-            <div>Grade Point: <%= @user_semester.gpa %></div>
+              <% if @user_semester.is_completed %>
+                  <h4><span class="label label-success">Completed</span></h4>
+              <% else %>
+                  <h4><span class="label label-info">Current</span></h4>
+              <% end %>
+              <div>Grade Point: <%= @user_semester.gpa %></div>
           <%else %>
-            <h4><span class="label label-danger">Not taken</span></h4>
+              <h4><span class="label label-danger">Not taken</span></h4>
           <% end %>
         </div>
       </div>
@@ -26,18 +26,15 @@
             </tr>
             </thead>
             <tbody>
-              <% @user_courses.each do |user_course|%>
+            <% @user_courses.each do |user_course|%>
                 <tr>
                   <td><%= Course.find(user_course.course_id).course_name %></td>
                   <td><%= user_course.grade_point %></td>
                 </tr>
-              <% end %>
+            <% end %>
             </tbody>
           </table>
         </div>
-      </div>
-      <div class="panel-footer">
-        <%= link_to 'Home', users_path, class:"btn btn-primary", style:"color:white" %>
       </div>
     </div>
   </div>

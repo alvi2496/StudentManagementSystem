@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-info">
+      <div class="panel-heading text-center">Result List</div>
+      <div class="panel-body">
+        <% if @courses %>
+            <%= form_tag controller:'results', :method => 'post', action: 'create_new', semester_id: @semester_id, student_id: @user_id  do %>
+                <% @courses.each do |course| %>
+                    <div class="form-group">
+                      <%= label_tag Course.find(course.course_id).course_name %>
+                      <%= text_field_tag("result[#{course.id}]", value=course.grade_point, option={class:'form-control', required: true}) %>
+                    </div>
+                <% end %>
+                <%= submit_tag 'Create', class:'btn btn-primary' %>
+            <% end %>
+        <% else %>
+            <p>There are no current semester to assign results</p>
+        <% end %>
+      </div>
+      <div class="panel-footer">
+        <%= link_to 'Home', users_path, class:"btn btn-primary", style:"color:white" %>
+      </div>
+    </div>
+  </div>
+</div>

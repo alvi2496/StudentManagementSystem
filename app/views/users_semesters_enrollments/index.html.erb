@@ -17,12 +17,12 @@
                   <td><%= semester.name%></td>
                   <td>
                     <% if UsersSemestersEnrollment.user_semester(current_user.id, semester.id).first.is_completed %>
-                        <span class="label label-success">Completed</span>
+                        <h4><span class="label label-success">Completed</span></h4>
                     <% else %>
-                        <span class="label label-info">Current</span>
+                        <h4><span class="label label-info">Current</span></h4>
                     <% end %>
                   </td>
-                  <td><%= link_to 'Show', users_semesters_enrollment_path(semester), class:"btn btn-primary", style:"color:white"%></td>
+                  <td><%= link_to 'View Result', users_semesters_enrollment_path(semester), class:"btn btn-primary", style:"color:white"%></td>
                 </tr>
             <% end %>
             </tbody>

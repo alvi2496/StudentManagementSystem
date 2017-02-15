@@ -17,14 +17,16 @@
           </ul>
         </li>
         <li><%= link_to "Take Courses", new_users_courses_enrollment_path %></li>
-        <li><%= link_to "View Result" %></li>
+        <li><%= link_to "View Result", users_semesters_enrollments_path %></li>
         <ul class="nav navbar-nav navbar-right">
-          <form class="navbar-form navbar-left">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search Semester">
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-          </form>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Result by Semester<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <% @semesters.each do |semester| %>
+                <li><%= link_to semester.name, users_semesters_enrollment_path(semester) %></li>
+              <% end %>
+            </ul>
+          </li>
           <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
         </ul>
       </ul>

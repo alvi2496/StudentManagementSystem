@@ -8,9 +8,11 @@ class UsersCoursesEnrollmentsController < ApplicationController
 
   def new
     semester = UsersSemestersEnrollment.current_semester(current_user.id).first
-    unless semester.is_courses_assigned
-      @course_assignment = UsersCoursesEnrollment.new
-      @courses = Course.courses_under(semester.semester_id)
+    if semester
+      unless semester.is_courses_assigned
+        @course_assignment = UsersCoursesEnrollment.new
+        @courses = Course.courses_under(semester.semester_id)
+      end
     end
   end
 
@@ -24,6 +26,11 @@ class UsersCoursesEnrollmentsController < ApplicationController
     end
     UsersSemestersEnrollment.user_semester(current_user.id, @semester_id).first.update_attribute(:is_courses_assigned, true)
     redirect_to users_path
+  end
+
+  def edit
+    current_semester_id = UsersSemestersEnrollment.current_semester(params[:id]).first.semester_id
+    @courses = UsersCoursesEnrollment.user_courses(params[:id], current_semester_id)
   end
 
   private

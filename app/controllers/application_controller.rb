@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
-
+  before_action :find_semesters
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_in) do |user_params|
@@ -34,6 +34,10 @@ class ApplicationController < ActionController::Base
     unless signed_in?
       redirect_to new_user_session_path
     end
+  end
+
+  def find_semesters
+    @semesters = Semester.sort_by_position
   end
 
 end

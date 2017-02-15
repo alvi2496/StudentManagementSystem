@@ -5,12 +5,12 @@
       <div class="panel-body">
         <% if @courses.present? %>
           <%= form_for(@course_assignment, method: 'post') do |f| %>
-                <%= f.collection_check_boxes(:course_id, @courses.all, :id, :course_name) do |course| %>
-                  <%= course.label( :"data-value" => course.value){course.check_box + " "+ course.text}  %><br>
-                <% end %>
-              <div class="actions">
-                <%= f.submit "Assign", class:"btn btn-primary" %>
-              </div>
+            <%= f.collection_check_boxes(:course_id, @courses.all, :id, :course_name) do |course| %>
+            <%= course.label( :"data-value" => course.value){course.check_box + " "+ course.text}  %><br>
+          <% end %>
+          <div class="actions">
+            <%= f.submit "Assign", class:"btn btn-primary" %>
+          </div>
           <% end %>
         <% else %>
           <p>There are no courses in this semester right now</p>

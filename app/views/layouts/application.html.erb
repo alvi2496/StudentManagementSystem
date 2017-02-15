@@ -11,8 +11,17 @@
   <body>
     <div class="row">
       <div class="col-md-12">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
+        <div align="center">
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+        </div>
+        <% if current_user.present? %>
+          <% if current_user.is_admin %>
+            <%= render partial: 'users/admin' %>
+          <% else %>
+            <%= render partial: 'users/student' %>
+          <% end %>
+        <%end%>
         <%= yield %>
       </div>
     </div>

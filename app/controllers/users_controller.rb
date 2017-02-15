@@ -2,11 +2,12 @@ class UsersController < ApplicationController
   before_action :ensure_current_user_has_a_value
 
   def index
-    if current_user.is_admin
-      render("admin")
-    else
-      render("student")
-    end
+    # if current_user.is_admin
+    #   render("admin")
+    # else
+
+    #   render("student")
+    # end
   end
 
   def show

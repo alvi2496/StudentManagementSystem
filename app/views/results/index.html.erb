@@ -16,9 +16,7 @@
                 <tr>
                   <td><%= semester.name%></td>
                   <td>
-                    <%= link_to 'Add', result_path(semester), class:"btn btn-primary" %>&nbsp;
-                    <%= link_to 'Edit', edit_result_path(semester), class:"btn btn-warning" %>&nbsp;
-                    <%= link_to 'Destroy', semester, class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>&nbsp;
+                    <%= link_to 'Select', result_path(semester), class:"btn btn-primary" %>&nbsp;
                   </td>
                 </tr>
             <% end %>

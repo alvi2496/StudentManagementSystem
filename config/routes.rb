@@ -18,11 +18,17 @@ Rails.application.routes.draw do
   end
   resources :users
   resources :users_semesters_enrollments
-  resources :users_courses_enrollments
+  resources :users_courses_enrollments do
+    member do
+      post :update
+    end
+  end
 
   resources :results do
     member do
-      post :add_new
+      get :add_new
+      post :create_new
+      get :edit_existing
     end
   end
 
