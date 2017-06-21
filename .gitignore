@@ -7,15 +7,28 @@
 # Ignore bundler config.
 /.bundle
 
-# Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-journal
-
+/vendor/ruby
+/vendor/gems
 # Ignore all logfiles and tempfiles.
 /log/*
-/tmp/*
+/tmp
 !/log/.keep
 !/tmp/.keep
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Ignore application configuration figaro
+/config/application.yml
+
+# Ignore database configuration
+/config/database.yml
+
+# Ignore rvm gemset config file
+.ruby-gemset
+
+# Ignore RubyMine idea directory
+.idea/*
+
+# Ignore resource folder of paperclip
+/public/system
