@@ -28,7 +28,7 @@
 .ruby-gemset
 
 # Ignore RubyMine idea directory
-.idea/*
+/.idea
 
 # Ignore resource folder of paperclip
-/public/system
+/public/uploads

@@ -32,4 +32,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :users_semesters_enrollments
+    end
+  end
+
 end
