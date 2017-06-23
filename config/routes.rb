@@ -34,7 +34,12 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
+      as :user do
+        post '/sign_in' => 'sessions#create'
+        delete '/sign_out' => 'sessions#destroy'
+      end
       resources :users_semesters_enrollments
+      # resources :sessions, only: [:create, :destroy]
     end
   end
 
