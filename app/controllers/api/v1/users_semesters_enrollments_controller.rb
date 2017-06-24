@@ -1,10 +1,10 @@
 module Api
   module V1
-    class UsersSemestersEnrollmentsController < ApplicationController
+    class UsersSemestersEnrollmentsController < Api::BaseController
       def index
-        current_user = User.find(11)
-        @semesters = current_user.semesters.sort_by_position
-        if @semesters.count > 0
+        @semesters = current_user.semesters.sort_by_position.joins(:users_semesters_enrollments).
+            select('semesters.id as id, semesters.name as name, semesters.position as position, users_semesters_enrollments.is_completed as is_completed')
+        if @semesters.count(:id) > 0
           @response = { status: 200, message: 'OK' }
         else
           @response = { status: 404, message: 'Not Found'}
